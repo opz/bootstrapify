@@ -1,1 +1,24 @@
 @import '../../bower_components/bootstrap/less/bootstrap.less';
+@import '../../bower_components/bootstrap/less/bootswatch.less';
+
+body {
+    padding-top: 45px;
+}
+
+.header {
+    color: #fff;
+    background-color: @brand-primary;
+}
+
+.header a {
+    color: #fff;
+}
+
+#site-title {
+    font-size: 5.0625em;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+    @media (min-width: @screen-sm) {
+        font-size: 7.594em;
+    }
+}
