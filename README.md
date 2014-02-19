@@ -4,6 +4,8 @@ Bootstrapify is an open-source base theme for [Shopify](http://www.shopify.com?r
 
 You can view the Bootstrapify theme at http://bootstrapify-theme.myshopify.com.
 
+##Modified to use LESS instead of SASS
+
 
 ## Getting started
 

@@ -34,22 +34,29 @@ module.exports = function(grunt) {
         src: ['theme/assets/_base.js', 'theme/assets/bootstrapify-option-selection.js']
       }
     },
+    less: {
+        development: {
+            options: {
+                compress: true,
+                optimization: 2
+            },
+            files: {
+              'theme/assets/styles.css': 'dist/less/styles.less',
+              'theme/assets/checkout.css.liquid': 'dist/less/checkout.less'
+            }
+        }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      sass: {
-        files: 'dist/scss/*.scss',
-        tasks: ['sass']
-      }
-    },
-    sass: {
-      dist: {
-        files: {
-          'theme/assets/_base.css': 'dist/scss/styles.scss',
-          'theme/assets/checkout.css.liquid': 'dist/scss/checkout.scss'
-        }
+      styles: {
+         files: ['bower_components/bootstrap/less/**/*.less'],
+         tasks: ['less'],
+         options: {
+             nospawn: true
+         }
       }
     },
     copy: {
@@ -58,7 +65,7 @@ module.exports = function(grunt) {
           // grab bootstraps js files
           {
             expand: true,
-            cwd: 'bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/',
+            cwd: 'bower_components/bootstrap/js/',
             src: '*.js',
             dest: 'theme/assets/'
           },
@@ -76,10 +83,10 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'copy', 'sass']);
+  grunt.registerTask('default', ['jshint', 'copy', 'less']);
 
 };

@@ -3,10 +3,11 @@
   "version": "3.0.2",
   "homepage": "https://github.com/luciddesign/bootstrapify",
   "authors": [
-    "Lucid Design <info@luciddesign.co.nz> (http://www.luciddesign.co.nz)"
+    "Lucid Design <info@luciddesign.co.nz> (http://www.luciddesign.co.nz)",
+    "Will Shahda <will.shahda@gmail.com> (http://willshahda.com)"
   ],
   "description": "An open-source base Shopify theme built with Twitter Bootstrap",
-  "main": "dist/styles.scss",
+  "main": "dist/styles.less",
   "keywords": [
     "Bootstrap",
     "Shopify"
@@ -21,7 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "git@github.com:twbs/bootstrap-sass.git#master",
+    "bootstrap": "~3.1.1",
     "typeahead.js": "~0.9.3"
   }
 }

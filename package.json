@@ -6,6 +6,12 @@
   "keywords": "Shopify, Bootstrap",
   "license": "Apache-2.0",
   "author": "Lucid Design <info@luciddesign.co.nz> (http://www.luciddesign.co.nz)",
+  "contributors": [
+      {
+          "name": "Will Shahda",
+          "email": "will.shahda@gmail.com"
+      }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/luciddesign/bootstrapify.git"
@@ -18,10 +24,11 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
+    "less": "~1.6.3",
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-sass": "~0.7.1",
+    "grunt-contrib-less": "~0.9.0",
     "grunt-contrib-copy": "~0.5.0"
   }
 }
