@@ -52,7 +52,10 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       styles: {
-         files: ['bower_components/bootstrap/less/**/*.less'],
+         files: [
+             'bower_components/bootstrap/less/*.less',
+             'dist/less/*.less'
+         ],
          tasks: ['less'],
          options: {
              nospawn: true
