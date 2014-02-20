@@ -40,6 +40,14 @@
         <div class="wrapper">
               <div class="row header">
                   <div class="col-xs-12 animated fadeInRight">
+                      {% if settings.navbar-placement != 'main-content' %}
+                          <div class="nav-shopping-cart">
+                            <a href="/cart" title="{% include '__localize' with 'View cart' %}"><strong>{% include '__localize' with 'View cart' %}</strong>&emsp;<span class="badge">{% include 'cart-count' %}</span></a></li>
+                            {% if cart.item_count > 0 %}
+                            <a href="/checkout" title="{% include '__localize' with 'Checkout' %}">{% include '__localize' with 'Checkout' %}</a></li>
+                            {% endif %}
+                        </div>
+                      {% endif %}
                       {% if settings.use_logo %}
                       <a id="logo" href="/" role="banner">
                           {{ 'logo.png' | asset_url | img_tag: shop.name }}
@@ -50,9 +58,7 @@
                       </h1>
                   </div>
                   <div class="clearfix"></div>
-                  <div class="col-xs-12">
-                      {% if settings.navbar-placement != 'main-content' %}{% include 'navbar' %}{% endif %}
-                  </div>
+                  {% if settings.navbar-placement != 'main-content' %}{% include 'navbar' %}{% endif %}
               </div>
               <div class="row content">
                 {{ content_for_layout }}

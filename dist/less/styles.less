@@ -6,15 +6,10 @@
 @import 'navbar.less';
 
 body {
-    padding-top: 45px;
     background-color: @background;
-}
-
-.custom-search-form {
-    width: 20em;
+    padding-top: 0;
     @media (min-width: @screen-sm) {
-        padding-bottom: 14px;
-        border-bottom: solid 4px @light;
+        padding-top: 3em;
     }
 }
 
@@ -27,6 +22,10 @@ body {
 .header a, .header a:hover {
     text-decoration: none;
     color: @dark;
+}
+
+.nav-shopping-cart {
+    float: right;
 }
 
 #site-title {

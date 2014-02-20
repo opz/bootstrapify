@@ -1,5 +1,8 @@
+@import 'variables.less';
+
 .navbar {
     background-color: transparent;
+    font-size: 1em;
 }
 
 .navbar-default .navbar-brand {
@@ -11,9 +14,10 @@
 }
 
 .navbar-default .navbar-nav {
-    width: 40%;
+    float: left;
     @media (min-width: @screen-sm) {
-        border-bottom: solid 4px @light;
+        width: 100%;
+        border-bottom: solid @navBorder @light;
     }
 }
 
@@ -30,23 +34,54 @@
 }
 
 .navbar-default .navbar-nav > li {
-    margin: 0 12px;
+    margin: 0 @navPadding;
 }
 
 .navbar-default .navbar-nav > li > a {
-    padding: 12px 0;
+    padding: @navPadding 0;
     color: @light;
+    line-height: 1.42857143em;
+}
+
+.navbar-default .navbar-nav > .active > a:before,
+.navbar-default .navbar-nav > li > a:hover:before,
+.navbar-default .navbar-nav > li > a:focus:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 50%;
+    @media (min-width: @screen-sm) {
+        border-top: @navTriangleHeight solid transparent;
+        border-right: @navTriangleWidth solid @dark;
+    }
+}
+
+.navbar-default .navbar-nav > .active > a:after,
+.navbar-default .navbar-nav > li > a:hover:after,
+.navbar-default .navbar-nav > li > a:focus:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: 0;
+    left: 50%;
+    @media (min-width: @screen-sm) {
+        border-right: @navTriangleWidth solid transparent;
+        border-bottom: @navTriangleHeight solid @dark;
+    }
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
     color: @dark;
     @media (min-width: @screen-sm) {
-        border-bottom: solid 4px @dark;
-        padding-top: 8px;
-        padding-bottom: 16px;
+        border-bottom: solid @navBorder @dark;
+        padding-top: @navPadding - @navBorder;
+        padding-bottom: @navPadding + @navBorder;
         position: relative;
-        top: 4px;
+        top: @navBorder;
     }
 }
 
@@ -54,11 +89,20 @@
     background-color: transparent;
     color: #333;
     @media (min-width: @screen-sm) {
-        border-bottom: solid 4px @dark;
-        padding-top: 8px;
-        padding-bottom: 16px;
+        border-bottom: solid @navBorder @dark;
+        padding-top: @navPadding - @navBorder;
+        padding-bottom: @navPadding + @navBorder;
         position: relative;
-        top: 4px;
+        top: @navBorder;
     }
 }
 
+.custom-search-form {
+    width: 100%;
+    float: right;
+    @media (min-width: @screen-sm) {
+        float: left;
+        padding-bottom: @navPadding;
+        border-bottom: solid @navBorder @light;
+    }
+}
