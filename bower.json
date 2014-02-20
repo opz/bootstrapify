@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
+    "animate.css": "~3.0.0",
     "bootstrap": "~3.1.1",
     "typeahead.js": "~0.9.3"
   }

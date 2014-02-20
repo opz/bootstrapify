@@ -37,7 +37,6 @@ module.exports = function(grunt) {
     less: {
         development: {
             options: {
-                compress: true,
                 optimization: 2
             },
             files: {
@@ -54,6 +53,7 @@ module.exports = function(grunt) {
       styles: {
          files: [
              'bower_components/bootstrap/less/*.less',
+             'bower_components/lesshat/build/*.less',
              'dist/less/*.less'
          ],
          tasks: ['less'],
@@ -70,6 +70,12 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'bower_components/bootstrap/js/',
             src: '*.js',
+            dest: 'theme/assets/'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/animate.css/',
+            src: '*.min.css',
             dest: 'theme/assets/'
           },
           {

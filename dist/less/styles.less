@@ -1,21 +1,36 @@
 @import '../../bower_components/bootstrap/less/bootstrap.less';
 @import '../../bower_components/bootstrap/less/bootswatch.less';
+@import '../../bower_components/lesshat/build/lesshat-prefixed.less';
+
+@import 'variables.less';
+@import 'navbar.less';
 
 body {
     padding-top: 45px;
+    background-color: @background;
 }
 
-.header {
-    color: #fff;
-    background-color: @brand-primary;
+.custom-search-form {
+    width: 20em;
+    @media (min-width: @screen-sm) {
+        padding-bottom: 14px;
+        border-bottom: solid 4px @light;
+    }
 }
 
-.header a {
-    color: #fff;
+.wrapper {
+    padding: @grid-gutter-width;
+    .box-shadow(0 0 8px rgba(0, 0, 0, 0.25));
+    background-color: #fff;
+}
+
+.header a, .header a:hover {
+    text-decoration: none;
+    color: @dark;
 }
 
 #site-title {
-    font-size: 5.0625em;
+    font-size: 3.375em;
     margin-top: 1em;
     margin-bottom: 0.75em;
     @media (min-width: @screen-sm) {

@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   
   {{ 'styles.css' | asset_url | stylesheet_tag }}
-  {{ 'animate.min.css' | asset_url | stylesheet_tag }}
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   
   <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -35,32 +34,42 @@
   {{ content_for_header }}
 </head>
 
-<body>
-    <div class="container">
-        <div class="wrapper">
-              <div class="row header">
-                  <div class="col-xs-12 animated fadeInRight">
-                      {% if settings.use_logo %}
-                      <a id="logo" href="/" role="banner">
-                          {{ 'logo.png' | asset_url | img_tag: shop.name }}
-                      </a><!-- #logo -->
-                      {% endif %}
-                      <h1 id="site-title" class="{% if settings.use_logo %}hidden{% endif %} text-center">
-                          <a href="/">{{ shop.name }}</a>
-                      </h1>
-                  </div>
-                  <div class="clearfix"></div>
-                  <div class="col-xs-12">
-                      {% if settings.navbar-placement != 'main-content' %}{% include 'navbar' %}{% endif %}
-                  </div>
-              </div>
-              <div class="row content">
-                {{ content_for_layout }}
-              </div>
-              <div class="row footer">
-              </div>
+<body class="{% if settings.show-multiple-currencies %} currencies{% endif %}">
+  <div id="wrap">
+  {% if settings.logo-placement == "above-navbar" %}{% include 'brand' %}{% endif %}
+    
+  {% if settings.navbar-placement != 'main-content' %}{% include 'navbar' %}{% endif %}
+  
+  {% if settings.slider-width == "window-width" and template == "index" %}{% include 'slider' %}{% endif %}
+    <div id="content" class="container">
+      {% if settings.navbar-placement == 'main-content' %}{% include 'navbar' %}{% endif %}
+      {% if settings.logo-placement != "navbar" and settings.logo-placement != "above-navbar" %}
+        <div class="{% if settings.logo-placement == "sidebar" %} visible-xs{% endif %}">{% include 'brand' %}</div>
+      {% endif %}
+      {% if settings.slider-width == "site-width" and template == "index" %}{% include 'slider' %}{% endif %}
+      
+      {% if settings.show-breadcrumbs and template != 'index' %}{% include 'breadcrumbs' %}{% endif %}
+      
+      <div class="row">
+        <div class="main-content {% include '__main-span' %}">
+          {% if settings.slider-width == "main-content-width" and template == "index" %}{% include 'slider' %}{% endif %}
+          {{ content_for_layout }}
         </div>
+        
+        {% if settings.show-sidebar %}
+          {% unless settings.show-sidebar-on-homepage == blank and template == "index" %}
+            {% include 'sidebar' %}
+          {% endunless %}
+        {% elsif settings.show-sidebar-on-homepage and template == "index" %}
+          {% include 'sidebar' %}
+        {% endif %}
+      </div>
     </div>
+  </div>
+  
+  {% include 'footer' %}
+  {% include 'currencies' %}
+  
   {{ '_base.js' | asset_url | script_tag }}
   <script type="text/javascript">
     $(document).ready(function(){
